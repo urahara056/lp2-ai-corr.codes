@@ -1,0 +1,74 @@
+def bfs(graph, start):
+    visit_complete = []
+    queue = []
+    queue.append(start)
+
+    while queue:
+        s = queue.pop(0)
+        if s not in visit_complete:
+            print(s)
+            visit_complete.append(s)
+            queue.extend(graph[s])
+
+def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+
+    print(start)
+
+    for next_node in graph[start]:
+        if next_node not in visited:
+            dfs(graph, next_node, visited)
+
+# Graphs
+bfs_graph = { 
+    'A': ['B', 'C', 'D'], 
+    'B': ['E', 'F'], 
+    'C': ['G', 'I'], 
+    'D': ['I'], 
+    'E': [], 
+    'F': [], 
+    'G': [], 
+    'I': [] 
+}
+
+dfs_graph = {
+    '0': ['1', '2'],
+    '1': ['0', '3', '4'],
+    '2': ['0'],
+    '3': ['1'],
+    '4': ['2', '3']
+}
+
+# BFS Output
+print("BFS Output:")
+bfs(bfs_graph, 'A')
+
+print()
+
+# DFS Output
+print("DFS Output:")
+dfs(dfs_graph, '0')
+
+
+*****OUTPUT*******
+
+codebind@codebind:~$ python3 bfs.py
+BFS Output:
+A
+B
+C
+D
+E
+F
+G
+I
+
+DFS Output:
+0
+1
+3
+4
+2
+

@@ -1,0 +1,36 @@
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+
+# Asking for user input for the number of elements
+num_elements = int(input("Enter the number of elements: "))
+arr = []
+
+# Asking for user input for each element
+for _ in range(num_elements):
+    element = int(input("Enter element: "))
+    arr.append(element)
+
+# Sorting the elements
+selection_sort(arr)
+
+print("Sorted array is:", arr)
+
+*****OUTPUT*****
+
+C:\Users\91844\PycharmProjects\HelloWorld\pythonProject\.venv\bin\python.exe C:\Users\91844\PycharmProjects\HelloWorld\pythonProject\selection_sort.py 
+Enter the number of elements: 5
+Enter element: 99
+Enter element: 88
+Enter element: 77
+Enter element: 66
+Enter element: 55
+Sorted array is: [55, 66, 77, 88, 99]
+
+Process finished with exit code 0
+
